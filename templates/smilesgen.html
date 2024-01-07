@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SMILESGEN: Small Molecule Generation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_gen.css') }}">
+    <script src="{{ url_for('static', filename='script_gen.js') }}"></script>
+</head>
+<body>
+<header>
+    <h1>SMILESGEN: Small Molecule Generation</h1>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#references">References</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="intro">
+        <h2>Welcome</h2>
+        <p>This is a web application for generating small molecules using a generative model. Please enter a SMILES string for the desired molecule and click the "Generate" button.</p>
+    </section>
+
+    <section class="prediction">
+        <h2>Generation</h2>
+        <p class="message">'Please enter the SMILES string for the desired molecule'</p>
+        <form action="{{ url_for('smilesgen') }}" method="post" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="smiles-input">SMILES string:</label>
+                <input type="text" id="smiles-input" name="smiles-input" required>
+            </div>
+            <div class="form-group">
+                <label for="n_steps">Steps:</label>
+                <select id="n_steps" name="n_steps">
+                    <option value="1">1</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="n_run">epochs:</label>
+                <select id="n_run" name="n_run">
+                    <option value="1">1</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <button type="submit" id="generate-btn">Generate</button>
+        </form>
+        {% if message %}
+        <p class="message">{{ message }}</p>
+        {% endif %}
+    </section>
+
+    <section id="about">
+        <h2>About</h2>
+        <p>This web application was built using a generative model for small molecule generation. The model uses a deep learning approach to generate molecules with specific desired properties.</p>
+    </section>
+
+    <section id="references">
+        <h2>References</h2>
+        <ul>
+            <li>Langevin M, Minoux H, Levesque M, et al. Scaffold-constrained molecular generation[J]. Journal of Chemical Information and Modeling, 2020, 60(12): 5637-5646.</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>If you have any questions or comments, please contact us at <a href="mailto:smilesgen@example.com">smilesgen@example.com</a>.</p>
+    </section>
+</main>
+
+<footer>
+    <p>© 2023 SMILESGEN. All rights reserved.</p>
+</footer>
+</body>
+</html>

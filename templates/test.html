@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Polymer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='chose.css') }}">
+
+
+<style>
+    body {
+        text-align: center;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    label {
+        text-align: left;
+    }
+
+    input[type="text"] {
+        width: 200px;
+    }
+
+    input[type="submit"] {
+        margin-top: 20px;
+    }
+
+    .success-message {
+        padding: 10px;
+        background-color: #c7f3b2;
+        color: #333;
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+              <!--==================== HEADER ====================-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">
+                    LeeSure
+                </a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <style>.nav__item {
+                                margin-left: -30px;
+                              }
+                              </style>
+                            <a href="{{ url_for('index') }}" class="nav__link">Home</a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="{{ url_for('tasks') }}"  class="nav__link active-link">Tasks</a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">News</a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="{{ url_for('static', filename='img/community.jpg') }}" class="nav__link">Community</a>
+                          </li>
+                          
+                    </ul>
+
+
+                      
+                    <!-- Close button  -->
+                    <div class="nav__close" id="nav-close">
+                        <i class="ri-close-line"></i>
+                    </div>
+                    <img src="{{ url_for('static', filename='img/ethereum-img.png') }}" alt="nav image" class="nav__img">
+                </div>
+
+                <!-- Toggle button  -->
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-4-line"></i>
+                </div>
+            </nav>
+        </header>
+    <div class="form-container">
+        <h1>简单高分子建模</h1>
+        <form action="/tasks/simple" method="post">
+            <label for="ncore">#Get model form this file: ncore</label>
+            <input type="text" id="ncore" name="ncore" value="15"><br><br>
+    
+            <label for="outfilename">outfilename:</label>
+            <input type="text" id="outfilename" name="outfilename" value="tes"><br><br>
+    
+            <label for="filename">filename:</label>
+            <input type="text" id="filename" name="filename" value="pc_h pc pc_t"><br><br>
+    
+            <label for="npoly">npoly:</label>
+            <input type="text" id="npoly" name="npoly" value="50"><br><br>
+
+    
+            <label for="linkatom">linkatom:</label>
+            <input type="text" id="linkatom" name="linkatom" value="C8 C7"><br><br>
+    
+            <label for="nchain">nchain:</label>
+            <input type="text" id="nchain" name="nchain" value="2"><br><br>
+    
+    
+            <label for="lbox">lbox:</label>
+            <input type="text" id="lbox" name="lbox" value="500 500 500"><br><br>
+    
+            <label for="step">step:</label>
+            <input type="text" id="step" name="step" value="10000 10000"><br><br>
+    
+            <label for="annealing">annealing:</label>
+            <input type="text" id="annealing" name="annealing" value="y"><br><br>
+    
+    
+            <label for="rise_step">rise_step:</label>
+            <input type="text" id="rise_step" name="rise_step" value="1000000"><br><br>
+    
+            <label for="rise_equil_step">rise_equil_step:</label>
+            <input type="text" id="rise_equil_step" name="rise_equil_step" value="1000000"><br><br>
+    
+            <label for="down_step">down_step:</label>
+            <input type="text" id="down_step" name="down_step" value="1000000"><br><br>
+    
+            <label for="down_equil_step">down_equil_step:</label>
+            <input type="text" id="down_equil_step" name="down_equil_step" value="1000000"><br><br>
+    
+            <label for="anneal_tmp_start">anneal_tmp_start:</label>
+            <input type="text" id="anneal_tmp_start" name="anneal_tmp_start" value="300"><br><br>
+    
+            <label for="anneal_tmp_down">anneal_tmp_down:</label>
+            <input type="text" id="anneal_tmp_down" name="anneal_tmp_down" value="500"><br><br>
+    
+            <input type="submit" value="submit">
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+
+
+
+
+
+<script>
+    {% if message %}
+        alert('{{ message }}');
+    {% endif %}
+</script>
+
+</body>
+</html>

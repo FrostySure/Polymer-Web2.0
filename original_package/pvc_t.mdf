@@ -1,0 +1,30 @@
+!BIOSYM molecular_data 4
+ 
+!Date: Sun Nov 19 16:35:51 2023   Materials Studio Generated MDF file
+ 
+#topology
+
+@column 1 element
+@column 2 atom_type
+@column 3 charge_group
+@column 4 isotope
+@column 5 formal_charge
+@column 6 charge
+@column 7 switching_atom
+@column 8 oop_flag
+@column 9 chirality_flag
+@column 10 occupancy
+@column 11 xray_temp_factor
+@column 12 connections
+ 
+@molecule Molecule
+ 
+XXXX_1:C1           C  c4      ?     0  0    -0.1060 0 0 8 1.0000  0.0000 C2 H1 H2 
+XXXX_1:C2           C  c4x     ?     0  0     0.1440 0 0 8 1.0000  0.0000 C1 H3 H4 Cl1 
+XXXX_1:H1           H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C1 
+XXXX_1:H2           H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C1 
+XXXX_1:H3           H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C2 
+XXXX_1:H4           H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C2 
+XXXX_1:Cl1          Cl cl1     ?     0  0    -0.2500 0 0 8 1.0000  0.0000 C2 
+ 
+#end

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== FAVICON ===============-->
+        <link rel="shortcut icon" href="static/risper.png"  type="image/x-icon">
+
+        <!--=============== REMIXICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+
+        <title>Polymer</title>
+    </head>
+    <body>
+        <!--==================== HEADER ====================-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">
+                    LeeSure
+                </a>
+
+                <div class="nav__menu" id="nav-menu">
+                    
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <style>.nav__item {
+                                margin-left: -30px;
+                              }
+                              </style>
+                            <a href="#" class="nav__link active-link">Home</a>
+                        </li>
+                        
+                        <li class="nav__item">
+                            <a href="{{ url_for('tasks') }}" class="nav__link">Tasks</a>
+                        </li>
+                        
+                        <li class="nav__item">
+                            <a href="{{ url_for('news') }}" class="nav__link">News</a>
+                        </li>
+                        
+                        <li class="nav__item">
+                            <a href="{{ url_for('community') }}" class="nav__link">Community</a>
+                        </li>
+                    </ul>
+
+                    <!-- Close button  -->
+                    <div class="nav__close" id="nav-close">
+                        <i class="ri-close-line"></i>
+                    </div>
+
+                    <img src="{{ url_for('static', filename='img/ethereum-img.png') }}" alt="nav image" class="nav__img">
+                </div>
+
+                <!-- Toggle button  -->
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-4-line"></i>
+                </div>
+            </nav>
+        </header>
+
+        <!--==================== MAIN ====================-->
+        <main class="main">
+            <!--==================== HOME ====================-->
+            <section class="home">
+                <div class="home__shape-small"></div>
+                <div class="home__shape-big-1"></div>
+                <div class="home__shape-big-2"></div>  
+                <img src="{{ url_for('static', filename='img/shape-bg.png') }}" alt="" class="home__shape-bg">
+                <div class="home__container container">
+                    <div class="home__info">
+                        <h1 class="home__title">
+                            <span>Polymer Discovery</span> <br>
+                            Generation, relaxation<br>
+                             and analysis.
+                        </h1>
+                        <p class="home__description">
+                            Structure-based platform for polymer molecular discovery.
+                        </p>
+                            <a href="{{ url_for('tasks') }}" class="home__button">EXPLORE</a>
+                    </div>
+
+                    <div class="home__group">
+                        <div class="home__images">
+                            <div class="home__img-eth">
+                                <img src="{{ url_for('static', filename='img/ethereum-img.png') }}" alt="home image">
+                            </div>
+                            
+                            <div class="home__img-orbe">
+                                <img src="{{ url_for('static', filename='img/orbe-img.png') }}" alt="home image">
+
+                            </div>
+                        </div>
+
+                        <div class="home__data">
+                            <div>
+                                <h2 class="home__data-number">High Throughput</h2>
+                                <span class="home__data-subtitle">Large scale</span>
+                            </div>
+                            <div>
+                                <h2 class="home__data-number">Auto</h2>
+                                <span class="home__data-subtitle">Just need a few parameters</span>
+                            </div>
+                            <div>
+                                <h2 class="home__data-number">3+ Model style</h2>
+                                <span class="home__data-subtitle">Multiple model tasks</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="home__footer">
+                        <div>
+                            <span class="home__footer-title">Current Version</span>
+                            <h3 class="home__footer-number">1.00 +</h3>
+                            <span class="home__footer-subtitle">2023-2-25</span>
+                        </div>
+
+                        <div>
+                            <span class="home__footer-title">Elapsed Time</span>
+
+                            <div class="home__footer-time">
+                                <div class="home__footer-counter">
+                                    <h3 class="home__footer-number" id="hours"></h3>
+                                    <span class="home__footer-subtitle">hours</span>
+                                </div>
+
+                                <div class="home__footer-counter">
+                                    <h3 class="home__footer-number" id="minutes"></h3>
+                                    <span class="home__footer-subtitle">minutes</span>
+                                </div>
+
+                                <div class="home__footer-counter">
+                                    <h3 class="home__footer-number" id="seconds"></h3>
+                                    <span class="home__footer-subtitle">seconds</span>
+                                </div>
+                            </div>
+
+                            <script>
+                                // 获取HTML元素
+                                var hoursElem = document.getElementById("hours");
+                                var minutesElem = document.getElementById("minutes");
+                                var secondsElem = document.getElementById("seconds");
+                                var startTime = new Date().getTime();
+                                // 设置定时器，每秒钟更新一次时间
+                                setInterval(function() {
+                                    var currentTime = new Date().getTime();
+                                    var elapsedTime = currentTime - startTime;
+                                    var seconds = Math.floor(elapsedTime / 1000);
+                                    var minutes = Math.floor(seconds / 60);
+                                    var hours = Math.floor(minutes / 60);
+                                    var timeString = '';
+                                    if (hours > 0) {
+                                    timeString += hours % 24 + ' hour' + (hours % 24 == 1 ? '' : 's') + ', ';
+                                    }
+                                    if (minutes > 0) {
+                                    timeString += minutes % 60 + ' minute' + (minutes % 60 == 1 ? '' : 's') + ', ';
+                                    }
+                                    timeString += seconds % 60 + ' second' + (seconds % 60 == 1 ? '' : 's');
+
+                                    // 更新HTML元素的内容
+                                    hoursElem.innerText = hours < 10 ? "0" + hours : hours;
+                                    minutesElem.innerText = minutes % 60 < 10 ? "0" + minutes % 60 : minutes % 60;
+                                    secondsElem.innerText = seconds % 60 < 10 ? "0" + seconds % 60 : seconds % 60;
+                                    }, 1000); // 每隔1000毫秒（即1秒）执行一次更新操作
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!--=============== SCROLLREVEAL ===============-->
+        <script src="{{ url_for('static', filename='scrollreveal.min.js') }}"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="{{ url_for('static', filename='main.js') }}"></script>
+    </body>
+</html>

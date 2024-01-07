@@ -1,0 +1,8 @@
+ import "poly50.lt"
+polymer1 = new Poly_50[10]
+
+ write_once("Data Boundary") {
+     0  100  xlo xhi
+     0  100  ylo yhi
+     0  100  zlo zhi
+  }

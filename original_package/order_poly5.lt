@@ -1,0 +1,21 @@
+import "poly_1.lt"
+import "poly_2.lt"
+import "poly_3.lt"
+
+
+
+Order_Poly_5 inherits COMPASS {
+ push(move(0,0,0))
+pop()
+ mon = new pc [5].rot(180,1.0,0.0,0.0).move(6.0,0,0)
+delete mon[0] 
+delete mon[4]
+ mon[0] = new pc_h
+ mon[4] = new pc_t.rot(180,1.0,0.0,0.0).move(12.0,0,0)
+write('Data Bond List') {
+         $bond:b1  $atom:mon[0]/C7 $atom:mon[1]/C8
+         $bond:b2  $atom:mon[1]/C7 $atom:mon[2]/C8
+         $bond:b3  $atom:mon[2]/C7 $atom:mon[3]/C8
+         $bond:b4  $atom:mon[3]/C7 $atom:mon[4]/C8
+}
+}

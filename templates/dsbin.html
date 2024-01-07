@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DSBIN: Protein-Ligand Binding Affinity Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_dsbin.css') }}">
+    <script src="{{ url_for('static', filename='script_dsbin.js') }}"></script>
+</head>
+<body>
+<header>
+    <h1>DSBIN: Protein-Ligand Binding Affinity Prediction</h1>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#references">References</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="intro">
+        <h2>Welcome</h2>
+        <p>This is a web application for predicting protein-ligand binding affinity using deep learning. Please upload your protein and ligand files below and click the "Predict" button.</p>
+    </section>
+
+    <section class="prediction">
+        <h2>Prediction</h2>
+        <p class="message">'Please upload the file of the protein and ligand complex docking structure'</p>
+        <form action="{{ url_for('dsbin') }}" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="ligand-file">Ligand file (PDB, SDF, MOL2):</label>
+                <input type="file" id="ligand-file" name="ligand-file" accept=".pdb,.sdf,.mol2" required>
+            </div>
+            <div class="form-group">
+                <label for="protein-file">Protein file (PDB):</label>
+                <input type="file" id="protein-file" name="protein-file" accept=".pdb" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        {% if message %}
+        <p class="message">{{ message }}</p>
+        {% endif %}
+    </section>
+
+    <section id="about">
+        <h2>About</h2>
+        <p>This web application was built using the Deep Learning-based Scoring and Binding Prediction of Proteins and Ligands (DSBIN) model. The DSBIN model uses graph neural networks to learn the interaction between proteins and ligands and predict binding affinity.</p>
+    </section>
+
+    <section id="references">
+        <h2>References</h2>
+        <ul>
+            <li>Zou Y, Wang R, Du M, et al. Identifying Protein–Ligand Interactions via a Novel Distance Self-Feedback Biomolecular Interaction Network[J]. The Journal of Physical Chemistry B, 2023.</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>If you have any questions or comments, please contact us at <a href="mailto:dsbin@example.com">dsbin@example.com</a>.</p>
+    </section>
+</main>
+
+<footer>
+    <p>© 2023 DSBIN. All rights reserved.</p>
+</footer>
+</body>
+</html>

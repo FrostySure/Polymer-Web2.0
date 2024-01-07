@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 其他头部内容 -->
+</head>
+<body>
+    <!-- 导航栏和表格内容 -->
+
+    <h2>File Selection</h2>
+    <input type="file" id="fileInput" accept=".pdb, .cif" />
+    <button onclick="selectFile()">Select File</button>
+    
+    <div id="ngl-container" style="width: 800px; height: 600px;"></div>
+    
+    <script>
+        var stage = new NGL.Stage("ngl-container");
+
+        // 选择文件并发送到后端的函数
+        function selectFile() {
+            var fileInput = document.getElementById("fileInput");
+            var file = fileInput.files[0];
+            if (file) {
+                var formData = new FormData();
+                formData.append("selectedFile", file);
+
+                // 发送文件到后端的请求
+                fetch("/upload_file", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // 文件上传成功，加载分子
+                        stage.removeAllComponents();
+                        stage.loadFile(data.filePath, { ext: "pdb" }).then(function (component) {
+                            stage.addComponent(component);
+                            stage.autoView();
+                        });
+                    } else {
+                        alert("File upload failed.");
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("An error occurred while uploading the file.");
+                });
+            }
+        }
+    </script>
+</body>
+</html>

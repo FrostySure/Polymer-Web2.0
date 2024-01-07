@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <title>Job State</title> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <script type="text/javascript">
+        var socket = io.connect('http://' + document.domain + ':' + location.port + '/job_state');
+        socket.on('connect', function() {
+            console.log('Connected to Socket.IO server');
+        });
+
+        // 监听top_output事件，实时更新输出信息
+        socket.on('top_output', function(data) {
+            // 更新页面中的输出信息
+            var outputDiv = document.getElementById('output');
+            outputDiv.innerHTML += data.line + '<br>';
+        });
+
+        // 监听job_finished事件，更新作业状态为完成
+        // socket.on('job_finished', function(data) {
+        //     // 根据作业目录查找对应的作业行，并更新状态为完成
+        //     var jobDir = data.job_dir;
+        //     var jobRow = document.getElementById(jobDir);
+        //     jobRow.cells[2].innerHTML = '完成';
+        // });
+
+        // // 监听new_job事件，添加新作业行
+        // socket.on('new_job', function(data) {
+        //     var jobDir = data.job_dir;
+        //     var status = data.status;
+
+        //     // 创建新行并填充数据
+        //     var table = document.getElementById('jobTable');
+        //     var newRow = table.insertRow(-1);
+        //     newRow.id = jobDir;
+        //     var cell1 = newRow.insertCell(0);
+        //     cell1.innerHTML = jobDir;
+        //     var cell2 = newRow.insertCell(1);
+        //     cell2.innerHTML = status;
+        //     var cell3 = newRow.insertCell(2);
+        //     cell3.innerHTML = '';
+
+        //     console.log('New job added:', jobDir);
+        // });
+    </script>
+</head>
+<body>
+    <!-- <h1>Job State</h1>
+
+    <table id="jobTable">
+        <tr>
+            <th>Job Directory</th>
+            <th>Status</th>
+            <th>Details</th> -->
+        <!-- </tr> -->
+        <!-- {% for job in jobs %}
+        <tr id="{{ job.job_dir }}">
+            <td>{{ job.job_dir }}</td>
+            <td>{{ job.status }}</td>
+            <td></td>
+        </tr>
+        {% endfor %} -->
+    </table>
+
+    <h2>Top Output</h2>
+    <div id="output"></div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+   import "order_poly5.lt"
+   polymer = new Order_Poly_5
+   write_once("Data Boundary") {
+     0.0000000     20  xlo xhi
+     0.0000000     10  ylo yhi
+     0.0000000     10  zlo zhi
+ }

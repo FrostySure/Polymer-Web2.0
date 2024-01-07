@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Selection of tasks</title>
+    <link rel="shortcut icon" href="static/risper.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='chose.css') }}">
+</head>
+
+<style>
+    /* Your existing CSS styles here */
+
+    /* Increase the font size for the entire webpage */
+    body {
+        font-size: 36px; /* Adjust the font size as needed */
+    }
+</style>
+<script type="text/javascript">
+    var socket = io.connect('http://' + document.domain + ':' + location.port + '/job_state');
+    socket.on('connect', function() {
+        console.log('Connected to Socket.IO server');
+    });
+
+
+
+    // 监听job_finished事件，更新作业状态为完成
+    socket.on('job_finished', function(data) {
+        // 根据作业目录查找对应的作业行，并更新状态为完成
+        var jobDir = data.job_dir;
+        var jobRow = document.getElementById(jobDir);
+        jobRow.cells[2].innerHTML = '完成';
+    });
+
+    // 监听new_job事件，添加新作业行
+    socket.on('new_job', function(data) {
+        var jobDir = data.job_dir;
+        var status = data.status;
+
+        // 创建新行并填充数据
+        var table = document.getElementById('jobTable');
+        var newRow = table.insertRow(-1);
+        newRow.id = jobDir;
+        var cell1 = newRow.insertCell(0);
+        cell1.innerHTML = jobDir;
+        var cell2 = newRow.insertCell(1);
+        cell2.innerHTML = status;
+        var cell3 = newRow.insertCell(2);
+        cell3.innerHTML = '';
+
+        console.log('New job added:', jobDir);
+    });
+
+    // 定时刷新top_output
+    setInterval(function() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                var topOutput = response.top_output;
+                var outputDiv = document.getElementById('output');
+                outputDiv.innerHTML = topOutput;
+            }
+        };
+        xhr.open('GET', '/get_top_output', true);
+        xhr.send();
+    }, 10000); // 每10秒刷新一次
+</script>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">
+                LeeSure
+            </a>
+    
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <style>.nav__item {
+                                margin-left: -30px;
+                            }
+                        </style>
+                        <a href="{{ url_for('index') }}" class="nav__link">Home</a>
+                    </li>
+    
+                    <li class="nav__item">
+                        <a href="{{ url_for('tasks') }}"  class="nav__link">Tasks</a>
+                    </li>
+
+
+                    <li class="nav__item">
+                        <a href="{{ url_for('news') }}"  class="nav__link">News</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="{{ url_for('job_state') }}" class="nav__link  active-link">Job State</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="{{ url_for('static', filename='img/community.jpg') }}" class="nav__link">Community</a>
+                    </li>
+    
+                </ul>
+    
+                <!-- Close button  -->
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+                <img src="{{ url_for('static', filename='img/ethereum-img.png') }}" alt="nav image" class="nav__img">
+            </div>
+    
+            <!-- Toggle button  -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-4-line"></i>
+            </div>
+        </nav>
+    </header>
+<h1>Job State</h1>
+
+<table id="jobTable">
+    <tr>
+        <th>Job Directory</th>
+        <th>Status</th>
+        <th>Details</th>
+    </tr>
+    {% for job in jobs %}
+
+    <tr style="font-size: 36px;" id="{{ job.job_dir }}">
+        <td>{{ job.job_dir }}</td>
+        <td>{{ job.status }}</td>
+        <td></td>
+    </tr>
+    {% endfor %}
+</table>
+<script>
+    // Function to refresh the page every 3 seconds initially
+    function autoRefresh() {
+        setTimeout(function() {
+            location.reload();
+            // After the initial 3-second refresh, switch to refreshing every 60 seconds
+            setInterval(function() {
+                location.reload();
+            }, 10000); // 60000 milliseconds = 60 seconds
+        }, 3000); // 3000 milliseconds = 3 seconds
+    }
+
+    // Call the autoRefresh function when the page loads
+    window.onload = autoRefresh;
+</script>
+<!-- <h2>Top Output</h2> -->
+<!-- <div id="output"></div> -->
+</body>
+</html>

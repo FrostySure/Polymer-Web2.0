@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <head>
+        <meta charset="utf-8">
+        <title>Selection of tasks</title>
+        <link rel="shortcut icon" href="static/risper.png" type="image/x-icon">
+        <link rel="stylesheet" href="{{ url_for('static', filename='chose.css') }}">
+    </head>
+    <body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">
+                LeeSure
+            </a>
+    
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <style>.nav__item {
+                                margin-left: -30px;
+                            }
+                        </style>
+                        <a href="{{ url_for('index') }}" class="nav__link">Home</a>
+                    </li>
+    
+                    <li class="nav__item">
+                        <a href="{{ url_for('tasks') }}"  class="nav__link active-link">Tasks</a>
+                    </li>
+    
+                    <li class="nav__item">
+                        <a href="{{ url_for('news') }}" class="nav__link">News</a>
+                    </li>
+    
+                    <li class="nav__item">
+                        <a href="{{ url_for('community') }}" class="nav__link">Community</a>
+                    </li>
+    
+                </ul>
+    
+                <!-- Close button  -->
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+                <img src="{{ url_for('static', filename='img/ethereum-img.png') }}" alt="nav image" class="nav__img">
+            </div>
+    
+            <!-- Toggle button  -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-4-line"></i>
+            </div>
+        </nav>
+    </header>    
+    <meta charset="UTF-8">
+    <title>背景图片示例</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('templates/community.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* 添加其他样式和内容以适应你的需求 */
+        .content {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <img src="{{ url_for('static', filename='img/community.jpg') }}" alt="home image">
+    </div>
+</body>
+</html>

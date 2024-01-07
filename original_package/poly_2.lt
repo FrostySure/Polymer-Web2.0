@@ -1,0 +1,39 @@
+import "compass.lt"
+pc inherits COMPASS {
+     write("Data Atoms") {
+     $atom:C1     $mol:... @atom:c3a                  0.000    -2.337804414     2.350235301     0.089504787
+     $atom:C2     $mol:... @atom:c3a                 -0.127    -1.591807428     1.208019197    -0.209077673
+     $atom:C3     $mol:... @atom:c3a                  0.102    -0.203462958     1.217748452    -0.283687688
+     $atom:C4     $mol:... @atom:c3a                  0.000     0.473261514     2.434727694    -0.048172184
+     $atom:C5     $mol:... @atom:c3a                 -0.127    -0.262514165     3.583338547     0.250889908
+     $atom:C6     $mol:... @atom:c3a                 -0.127    -1.643464142     3.546834073     0.320020507
+     $atom:C7     $mol:... @atom:c4                  -0.106     1.975615111     2.522607899    -0.112261497
+     $atom:C8     $mol:... @atom:c4                  -0.106    -3.838531384     2.306617398     0.162787080
+     $atom:Cl1    $mol:... @atom:cl1                 -0.102     0.638406453    -0.230453597    -0.655507881
+     $atom:H1     $mol:... @atom:h1                   0.127    -2.122279109     0.263360778    -0.392200890
+     $atom:H2     $mol:... @atom:h1                   0.127     0.249941624     4.538566754     0.436794554
+     $atom:H3     $mol:... @atom:h1                   0.127    -2.188710625     4.470980609     0.558250015
+     $atom:H4     $mol:... @atom:h1                   0.053     2.333230529     2.243078050    -1.115782955
+     $atom:H5     $mol:... @atom:h1                   0.053     2.429850759     1.872299342     0.651667246
+     $atom:H6     $mol:... @atom:h1                   0.053    -4.160791483     1.580407706     0.926159356
+     $atom:H7     $mol:... @atom:h1                   0.053    -4.258651196     2.039675457    -0.820170598
+    }
+ write('Data Bond List') {
+     $bond:b1  $atom:C1  $atom:C2
+     $bond:b2  $atom:C1  $atom:C6
+     $bond:b3  $atom:C1  $atom:C8
+     $bond:b4  $atom:C2  $atom:C3
+     $bond:b5  $atom:C2  $atom:H1
+     $bond:b6  $atom:C3  $atom:C4
+     $bond:b7  $atom:C3  $atom:Cl1
+     $bond:b8  $atom:C4  $atom:C5
+     $bond:b9  $atom:C4  $atom:C7
+     $bond:b10  $atom:C5  $atom:C6
+     $bond:b11  $atom:C5  $atom:H2
+     $bond:b12  $atom:C6  $atom:H3
+     $bond:b13  $atom:C7  $atom:H4
+     $bond:b14  $atom:C7  $atom:H5
+     $bond:b15  $atom:C8  $atom:H6
+     $bond:b16  $atom:C8  $atom:H7
+}
+}

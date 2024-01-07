@@ -1,0 +1,58 @@
+!BIOSYM molecular_data 4
+ 
+!Date: Sun Nov 19 16:36:52 2023   Materials Studio Generated MDF file
+ 
+#topology
+
+@column 1 element
+@column 2 atom_type
+@column 3 charge_group
+@column 4 isotope
+@column 5 formal_charge
+@column 6 charge
+@column 7 switching_atom
+@column 8 oop_flag
+@column 9 chirality_flag
+@column 10 occupancy
+@column 11 xray_temp_factor
+@column 12 connections
+ 
+@molecule Molecule
+ 
+XXXX_1:C1           C  c3prime ?     0  0     0.4500 0 0 8 1.0000  0.0000 C2 O1/2.0 
+XXXX_1:C2           C  c4      ?     0  0    -0.1060 0 0 8 1.0000  0.0000 C1 C3 H1 H2 
+XXXX_1:C3           C  c4      ?     0  0    -0.1060 0 0 8 1.0000  0.0000 C2 C4 H3 H4 
+XXXX_1:C4           C  c4      ?     0  0    -0.1060 0 0 8 1.0000  0.0000 C3 C5 H5 H6 
+XXXX_1:C5           C  c4      ?     0  0    -0.1060 0 0 8 1.0000  0.0000 C4 C6 H7 H8 
+XXXX_1:C6           C  c3prime ?     0  0     0.4500 0 0 8 1.0000  0.0000 C5 O2/2.0 N1 
+XXXX_1:O1           O  o1=     ?     0  0    -0.4500 0 0 8 1.0000  0.0000 C1/2.0 
+XXXX_1:O2           O  o1=     ?     0  0    -0.4500 0 0 8 1.0000  0.0000 C6/2.0 
+XXXX_1:N1           N  n3mh    ?     0  0    -0.5740 0 0 8 1.0000  0.0000 C6 C7 H9 
+XXXX_1:C7           C  c4      ?     0  0     0.1170 0 0 8 1.0000  0.0000 N1 C8 H10 H11 
+XXXX_1:C8           C  c4      ?     0  0     0.3852 0 0 8 1.0000  0.0000 C7 C9 H12 H13 
+XXXX_1:C9           C  c4      ?     0  0    -1.7274 0 0 8 1.0000  0.0000 C8 C10 H14 
+XXXX_1:C10          C  c       ?     0  0     0.4912 0 0 8 1.0000  0.0000 C9 C11 
+XXXX_1:C11          C  c4      ?     0  0    -0.1060 0 0 8 1.0000  0.0000 C10 C12 H15 H16 
+XXXX_1:C12          C  c4      ?     0  0     0.1170 0 0 8 1.0000  0.0000 C11 N2 H19 H18 
+XXXX_1:N2           N  n3mh    ?     0  1-   -0.5740 0 0 8 1.0000  0.0000 C12 H17 
+XXXX_1:H1           H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C2 
+XXXX_1:H2           H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C2 
+XXXX_1:H3           H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C3 
+XXXX_1:H4           H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C3 
+XXXX_1:H5           H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C4 
+XXXX_1:H6           H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C4 
+XXXX_1:H7           H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C5 
+XXXX_1:H8           H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C5 
+XXXX_1:H9           H  h1n     ?     0  0     0.3510 0 0 8 1.0000  0.0000 N1 
+XXXX_1:H10          H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C7 
+XXXX_1:H11          H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C7 
+XXXX_1:H12          H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C8 
+XXXX_1:H13          H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C8 
+XXXX_1:H14          H  h1      ?     0  0    -0.2550 0 0 8 1.0000  0.0000 C9 
+XXXX_1:H15          H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C11 
+XXXX_1:H16          H  h1      ?     0  0     0.0530 0 0 8 1.0000  0.0000 C11 
+XXXX_1:H17          H  h1n     ?     0  0     0.3510 0 0 8 1.0000  0.0000 N2 
+XXXX_1:H18          H  h       ?     0  0     0.0530 0 0 8 1.0000  0.0000 C12 
+XXXX_1:H19          H  h       ?     0  0     0.0530 0 0 8 1.0000  0.0000 C12 
+ 
+#end

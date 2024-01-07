@@ -1,0 +1,43 @@
+variable        mu index -8.1
+variable        disp index 0.5
+variable        temp index 298.0
+units real
+atom_style full
+bond_style hybrid class2
+angle_style hybrid class2
+dihedral_style hybrid class2
+improper_style hybrid class2
+pair_style  lj/class2/coul/cut 10.0
+pair_modify mix sixthpower
+special_bonds lj/coul 0.0 0.0 1.0 dihedral yes
+#kspace_style pppm 0.0001
+read_data final_300K.data
+molecule  mols CO2.txt
+include  gcmc.in.settings
+group  mol type 33 120
+#neigh_modify    every 1 delay 10 check yes
+velocity        all create ${temp} 54654
+timestep        1.0
+compute mdtemp1 mol  temp
+compute_modify mdtemp1 dynamic/dof yes
+fix             myri mol rigid/nvt/small molecule temp ${temp} ${temp} 100 mol mols
+fix_modify      myri dynamic/dof yes
+fix 2 all  nvt temp ${temp} ${temp} 100
+fix_modify      2 dynamic/dof yes
+variable        tfac equal 5.0/3.0
+fix   mygcmc mol gcmc 10 100 0 0 54341 ${temp} ${mu} ${disp} mol mols  group mol  pressure 10
+ variable        C atom "type==33"
+ variable        O atom "type==120"
+ group           C dynamic mol var C
+ group           O dynamic mol var O
+ variable        nC equal count(C)
+ variable        nO equal count(O)
+variable        tacc equal f_mygcmc[2]/(f_mygcmc[1]+0.1)
+variable        iacc equal f_mygcmc[4]/(f_mygcmc[3]+0.1)
+variable        dacc equal f_mygcmc[6]/(f_mygcmc[5]+0.1)
+variable        racc equal f_mygcmc[8]/(f_mygcmc[7]+0.1)
+compute_modify  thermo_temp dynamic/dof yes
+thermo_style custom step temp press pe ke density atoms v_iacc v_dacc v_tacc v_racc v_nC v_nO c_mdtemp1
+thermo          10
+run             1000000
+write_data last.data
